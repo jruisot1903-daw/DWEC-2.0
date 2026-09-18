@@ -36,3 +36,21 @@ footer{
     height: 10%;
     background-color: green;
 }
+
+#usa{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    opacity: 0.25;
+    width: 100px;
+    height: 100px;
+}
+
+#israel{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    opacity: 0.25;
+    width: 150px;
+    height: 100px;
+}
