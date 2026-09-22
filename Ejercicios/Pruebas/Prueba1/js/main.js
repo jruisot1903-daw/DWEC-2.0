@@ -1,3 +1,4 @@
+// Primer Ejemplo general de una composición HTML con JS
 const mainHTML = document.getElementById("main");
 
     const btnColor = document.createElement("button");
@@ -27,5 +28,21 @@ const mainHTML = document.getElementById("main");
         
     })
 
+// Inciamos Pruebas con JS
 
+let userName = "Payicox Poni";
+
+console.log("Nombre de usuario logeado:" + userName);
+
+userName = 3;
+
+console.log("Numero introducido: " + userName);
+
+userName = "Ana";
+
+console.log("Nombre de usuario logeado: " + userName);
+
+userName = 3.33;
+
+console.log("Numero introducido: " + userName);
 
