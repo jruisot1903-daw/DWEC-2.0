@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto - DevTools</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/main.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>Banco de Pruebas DevTools</h1>
+        <p>Aplicación para practicar con las herramientas de desarrollo del navegador</p>
+    </header>
+    <main>
+        <section class="panel">
+            <h2>Añadir tarea</h2>
+            <form id="formTarea">
+                <div class="campo"> <label for="nombreTarea">Nombre de la tarea</label> <input type="text"
+                        id="nombreTarea" placeholder="Ej: Estudiar JavaScript"> </div>
+                <div class="campo"> <label for="prioridad">Prioridad</label> <select id="prioridad">
+                        <option value="1">Baja</option>
+                        <option value="2">Media</option>
+                        <option value="3">Alta</option>
+                    </select> </div> <button type="submit" id="btnAñadir"> Añadir tarea </button>
+            </form>
+        </section>
+        <section class="panel">
+            <div class="cabeceraLista">
+                <h2>Lista de tareas</h2> <span id="contador">0 tareas</span>
+            </div>
+            <ul id="listaTareas"></ul>
+            <p id="mensaje" class="mensaje"> No hay tareas todavía. </p>
+        </section>
+        <section class="panel">
+            <h2>Pruebas de DevTools</h2>
+            <p> Estos botones permiten provocar diferentes situaciones para practicar con la consola y el depurador.
+            </p>
+            <div class="botones"> <button id="btnError" class="btn-error"> Provocar error </button> <button
+                    id="btnDatos" class="btn-secundario"> Mostrar datos </button> <button id="btnLimpiar"
+                    class="btn-secundario"> Limpiar tareas </button> </div>
+        </section>
+    </main>
+    <footer>
+        <p>Práctica de DevTools - Desarrollo Web</p>  
+    </footer>
+</body>
+
+</html>

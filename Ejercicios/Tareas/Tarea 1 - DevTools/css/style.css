@@ -1,0 +1,203 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f4f7;
+    color: #222;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* CABECERA */
+
+header {
+    background-color: #263238;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+header p {
+    color: #cfd8dc;
+}
+
+
+/* CONTENIDO */
+
+main {
+    width: 90%;
+    max-width: 900px;
+    margin: 30px auto;
+
+    flex: 1;
+}
+
+
+/* PANELES */
+
+.panel {
+    background-color: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.panel h2 {
+    margin-bottom: 20px;
+    color: #263238;
+}
+
+
+/* FORMULARIO */
+
+.campo {
+    margin-bottom: 18px;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.campo input,
+.campo select {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #b0bec5;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.campo input:focus,
+.campo select:focus {
+    outline: none;
+    border-color: #1976d2;
+}
+
+
+/* BOTONES */
+
+button {
+    border: none;
+    border-radius: 5px;
+    padding: 11px 18px;
+    font-size: 15px;
+    cursor: pointer;
+    background-color: #1976d2;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+.btn-error {
+    background-color: #d32f2f;
+}
+
+.btn-secundario {
+    background-color: #546e7a;
+}
+
+.botones {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+
+/* CABECERA DE LA LISTA */
+
+.cabeceraLista {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.cabeceraLista h2 {
+    margin-bottom: 0;
+}
+
+#contador {
+    background-color: #e3f2fd;
+    color: #1565c0;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 14px;
+}
+
+
+/* LISTA DE TAREAS */
+
+#listaTareas {
+    list-style: none;
+}
+
+.tarea {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-left: 5px solid #1976d2;
+    background-color: #f5f7f9;
+    border-radius: 4px;
+}
+
+.tarea-info h3 {
+    margin-bottom: 5px;
+}
+
+.tarea-info p {
+    font-size: 14px;
+    color: #607d8b;
+}
+
+
+/* PRIORIDADES */
+
+.prioridad-baja {
+    border-left-color: #388e3c;
+}
+
+.prioridad-media {
+    border-left-color: #f9a825;
+}
+
+.prioridad-alta {
+    border-left-color: #d32f2f;
+}
+
+
+/* MENSAJE */
+
+.mensaje {
+    text-align: center;
+    padding: 20px;
+    color: #78909c;
+}
+
+
+/* PIE */
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #263238;
+    color: #cfd8dc;
+    margin-top: auto;
+}
