@@ -129,8 +129,8 @@ const btnSumar = document.getElementById("btnSumar");
 // se lo asignamos al btn (funcion sin parametros)
 // btnSumar.onclick = doSuma;
 
-let result = doSuma(56, 77,44,22,11);
-console.log("Resultado de la suma: " + result);
+// let result = doSuma(56, 77,44,22,11);
+// console.log("Resultado de la suma: " + result);
 
 /******** FUNCTIONS *****************************************/
 
@@ -154,15 +154,89 @@ console.log("Resultado de la suma: " + result);
 
 // fuction con array arguments
 
-function doSuma() {
-  console.dir(arguments);
-  let result = 0;
+// function doSuma() {
+//   console.dir(arguments);
+//   let result = 0;
 
-  for (let i = 0; i < arguments.length; i++) {
-    result += arguments[i];
-  }
+//   for (let i = 0; i < arguments.length; i++) {
+//     result += arguments[i];
+//   }
 
-   h11.innerHTML = "Resultado de la operación: " + result;
+//    h11.innerHTML = "Resultado de la operación: " + result;
 
-    return result;
+//     return result;
+// }
+
+/* TRY CATH */
+
+// let result = suma(-1, 7);
+
+// console.log("Resultado de la suma: " + result);
+
+// function suma(dato1, dato2) {
+//   let a = dato1 || parseFloat(in1.value);
+//   let b = dato2 || parseFloat(in2.value);
+//   let result = 0;
+//   try {
+//     if (isNaN(a) || isNaN(b)) throw "Los datos no son numeros";
+
+//     if (a == "" || b == "") throw "Los campos no pueden estar vacios";
+
+//     if (a < 0 || b < 0) throw "Los numeros no pueden ser más pequeños que 0";
+
+//     if (typeof a == "number" && typeof b == "number") {
+//       result = a + b;
+//       h11.innerHTML = "Resultado de la operación: " + result;
+//       in1.value = "0";
+//       in2.value = "0";
+//     } else h11.innerHTML = "Valores no válidos para hacer la suma.";
+//     return result;
+//   } catch (err) {
+//     h11.style.color = "blue";
+//     h11.innerHTML = "Error: " + err;
+//   } finally {
+//     console.log("A quien no le gusta abrir cajas chicos ....");
+//   }
+// }
+
+document.getElementById("in1").onfocus = function () {
+    this.value = "";
+    document.getElementById("pError").innerHTML = "";
+}
+
+document.getElementById("in2").onfocus = function () {
+    this.value = "";
+    document.getElementById("pError").innerHTML = "";
+}
+
+document.getElementById("btnSumar").addEventListener("click", function () {
+    let in1 = document.getElementById("in1").value;
+    let in2 = document.getElementById("in2").value;
+
+    try {
+      errorFilter(in1);
+      errorFilter(in2);
+      alert ("Resultado: " + (parseFloat(in1)+parseFloat(in2)));
+    }
+    catch (err) {
+        document.getElementById("pError").innerHTML = err + ":" + err.cause;
+    }
+})
+
+/************** FUNCTIONS *****************************************************/
+/**
+ * Comprueba si el dato que se pasa es un número positivo. Ejecutar siempre dentro de try - catch
+ * @param valor a filtrar
+ */
+function errorFilter(data) {
+    if (data == "")            
+        throw new Error("Error en dato", {cause:"Cadena vacía"});
+
+    data = parseFloat(data);
+
+    if (isNaN(data))
+        throw new Error ("Error en dato", {cause:"No es un número"})
+
+    if (data < 0)
+        throw new Error ("Error en dato", {cause:"Valor negativo"})
 }
