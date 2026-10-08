@@ -50,3 +50,40 @@ for (let data of myAlumns) {
     for (let i = 0; i < claves.length; i++)
         console.log("Valor de la clave " + i + " es " + data[claves[i]]);
 }
+
+// math.random
+
+let random = Math.floor(Math.random()*99) + 1;
+const h21 = document.getElementById("h21");
+console.log(random);
+var quijote = "Don Quijote";
+var texto = `Lorem ipsum 'dolor' ${quijote} sit amet consectetur, adipisicing elit. ${quijote} Ducimus rerum quaerat, molestias maxime adipisci ${quijote} officiis voluptatibus autem ${quijote} distinctio tempora voluptate molestiae, consequatur reiciendis soluta similique magnam, ${quijote} animi asperiores rem temporibus!`;
+h21.innerText = texto;
+
+var encontrado = texto.matchAll("Quijote");
+
+if (!encontrado)
+    h21.innerHTML += "No se ha encontrado."
+else
+    h21.innerHTML += "<hr>Encontrado: " + encontrado + " en " + encontrado.index;
+
+var myArray = new Array();
+
+myArray.push("Pepe");
+myArray.push(true);
+myArray.push("Ana");
+myArray.push(25.36);
+myArray.push({name:"Adela", surname: "Alcalá", age: 19});
+myArray.push(false);
+
+h21.innerHTML += "<hr>"
+
+for (elem of myArray)
+    h21.innerHTML += " - " + elem;
+
+h21.innerHTML += "<hr>" + myArray.splice(1,0,44,"hola",66);
+
+h21.innerHTML += "<hr>"
+
+for (elem of myArray)
+    h21.innerHTML += " - " + elem;
