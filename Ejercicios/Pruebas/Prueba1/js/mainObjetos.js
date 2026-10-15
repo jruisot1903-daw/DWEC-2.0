@@ -161,3 +161,54 @@ calendario.onchange = function (){
 }
 
 h21.innerHTML = dateNow.toLocaleDateString();  
+
+// Propiedades del Objeto NAVIGATOR
+
+h21.innerHTML = " ";
+
+let navObj = new Object({
+    userAgent: navigator.userAgent,
+    platform: navigator.platform,
+    language: navigator.language,
+    languages: navigator.languages,
+    onLine: navigator.onLine,
+    cookie: navigator.cookieEnabled,
+    hardwar: navigator.hardwareConcurrency,
+    memory: navigator.deviceMemory,
+    vendor: navigator.vendor,
+    product: navigator.product
+});
+
+h21.innerHTML += "Navegador y Sitema:<br>"+  navObj.userAgent + "<br>";
+h21.innerHTML += "Plataforma del SO: "+  navObj.platform + "<br>";
+h21.innerHTML += "Lenguaje: "+  navObj.language + "<br>";
+h21.innerHTML += "Idiomas: "+  navObj.languages + "<br>";
+h21.innerHTML += "Conectado a internet?: "+  navObj.onLine + "<br>";
+h21.innerHTML += "Cookies permitidas?: "+  navObj.cookie + "<br>";
+h21.innerHTML += "Numeros de nucleos CPU: "+  navObj.hardwar + "<br>";
+h21.innerHTML += "Memoria RAM: "+  navObj.memory + "<br>";
+h21.innerHTML += "Vendedor: "+  navObj.vendor + "<br>";
+h21.innerHTML += "Producto: "+  navObj.product + "<br>";
+
+// Propiedades del Objeto screen
+
+h21.innerHTML = "";
+
+h21.innerHTML = `Ancho total: ${screen.width}, Alto total: ${screen.height}<br>`;
+h21.innerHTML += `Ancho disponible: ${screen.availWidth}, Alto disponible   : ${screen.availHeight}`;
+h21.innerHTML +=`<br>Numero de colores : ${screen.colorDepth}`;
+
+h21.innerHTML +=`<br>Orientacion: ${screen.orientation.angle}`;
+
+if(screen.orientation.angle == 0){
+    h21.innerHTML = "La pantalla es landscape";
+}else{
+    h21.innerHTML = "La pantalla es portrail";
+}
+
+document.body.onresize = function () {
+    if (screen.height > screen.width) 
+        h21.innerHTML = "landscape";
+    else 
+        h21.innerHTML = "portrait";
+}
