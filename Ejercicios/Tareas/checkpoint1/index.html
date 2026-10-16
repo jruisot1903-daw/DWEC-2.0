@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talleres Ruedas - Presupuestos</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <h1>Talleres Ruedas · Presupuesto de reparación</h1>
+
+  <form id="formulario">
+    <fieldset>
+      <legend>Datos del cliente</legend>
+      <p>
+        <label for="cliente">Nombre del cliente:</label><br>
+        <input type="text" id="cliente" placeholder="Ej: Marta Ruiz">
+      </p>
+      <p>
+        <label for="matricula">Matrícula (4 números + 3 consonantes):</label><br>
+        <input type="text" id="matricula" placeholder="Ej: 1234BCD">
+      </p>
+      <p>
+        <label for="vehiculo">Tipo de vehículo:</label><br>
+        <select id="vehiculo">
+          <option value="">-- Selecciona --</option>
+          <option value="moto">Moto</option>
+          <option value="turismo">Turismo</option>
+          <option value="suv">SUV / Todoterreno</option>
+          <option value="furgoneta">Furgoneta</option>
+        </select>
+      </p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Servicios (indica la cantidad, 0 si no se necesita)</legend>
+      <p>
+        <label for="aceite">Cambio de aceite (45 €):</label>
+        <input type="number" id="aceite" value="0">
+      </p>
+      <p>
+        <label for="filtros">Cambio de filtros (30 €):</label>
+        <input type="number" id="filtros" value="0">
+      </p>
+      <p>
+        <label for="frenos">Pastillas de freno, por eje (80 €):</label>
+        <input type="number" id="frenos" value="0">
+      </p>
+      <p>
+        <label for="neumaticos">Neumático, por unidad (70 €):</label>
+        <input type="number" id="neumaticos" value="0">
+      </p>
+      <p>
+        <label for="alineado">Alineado de dirección (35 €):</label>
+        <input type="number" id="alineado" value="0">
+      </p>
+    </fieldset>
+
+    <p>
+      <label for="pago">Forma de pago:</label><br>
+      <select id="pago">
+        <option value="">-- Selecciona --</option>
+        <option value="efectivo">Efectivo</option>
+        <option value="tarjeta">Tarjeta</option>
+        <option value="financiado">Financiado en 3 meses</option>
+      </select>
+    </p>
+
+    <p>
+      <button type="button" id="btnPresupuesto">Generar presupuesto</button>
+      <button type="button" id="btnLimpiar">Limpiar</button>
+    </p>
+  </form>
+
+  <p id="mensaje"></p>
+
+  <div id="presupuesto"></div>
+
+  <h2 id="servi"></h2>
+
+  <p>
+    <label for="total">Total con IVA:</label><br>
+    <input type="text" id="total" readonly>
+  </p>
+</body>
+</html>

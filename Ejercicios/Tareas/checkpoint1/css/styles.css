@@ -1,0 +1,323 @@
+/* =============================================
+   Talleres Ruedas - Presupuesto de reparación
+   Hoja de estilos de la interfaz
+   ============================================= */
+
+:root {
+  --fondo: #eef0f2;
+  --tarjeta: #ffffff;
+  --texto: #1d2329;
+  --suave: #5b6670;
+  --borde: #d5dade;
+  --grafito: #252c33;
+  --naranja: #e8650a;
+  --naranja-oscuro: #c45306;
+  --naranja-claro: #fdf0e6;
+  --radio: 10px;
+  --sombra: 0 4px 18px rgba(29, 35, 41, 0.08);
+  --fuente: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 40px 16px;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: var(--fuente);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* ---------- Cabecera ---------- */
+h1 {
+  margin: 0 0 24px;
+  padding: 22px 24px;
+  background: var(--grafito);
+  color: #ffffff;
+  font-size: 1.45rem;
+  font-weight: 700;
+  border-radius: var(--radio);
+  border-bottom: 5px solid var(--naranja);
+  box-shadow: var(--sombra);
+}
+
+/* ---------- Formulario ---------- */
+#formulario {
+  padding: 24px;
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+}
+
+fieldset {
+  margin: 0 0 22px;
+  padding: 18px 20px 6px;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+}
+
+legend {
+  padding: 0 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--grafito);
+}
+
+#formulario p {
+  margin: 0 0 14px;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--suave);
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 10px 12px;
+  font: inherit;
+  color: var(--texto);
+  background: #fafbfc;
+  border: 1px solid var(--borde);
+  border-radius: 7px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--naranja);
+  box-shadow: 0 0 0 3px rgba(232, 101, 10, 0.18);
+  background: #ffffff;
+}
+
+input::placeholder {
+  color: #a3abb2;
+}
+
+/* Datos del cliente: nombre y matrícula en la misma fila */
+fieldset:first-of-type {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 0 18px;
+}
+
+fieldset:first-of-type p:last-child {
+  grid-column: 1 / -1;
+}
+
+/* Servicios: etiqueta a la izquierda, cantidad a la derecha */
+fieldset:nth-of-type(2) p {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 0;
+  margin: 0;
+  border-bottom: 1px solid #eceff1;
+}
+
+fieldset:nth-of-type(2) p:last-child {
+  border-bottom: none;
+  margin-bottom: 8px;
+}
+
+fieldset:nth-of-type(2) label {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--texto);
+}
+
+fieldset:nth-of-type(2) input[type="number"] {
+  width: 80px;
+  text-align: center;
+}
+
+/* ---------- Botones ---------- */
+button {
+  padding: 11px 22px;
+  margin-right: 10px;
+  font: inherit;
+  font-weight: 600;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.05s;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+#btnPresupuesto {
+  background: var(--naranja);
+  color: #ffffff;
+  border: 1px solid var(--naranja);
+}
+
+#btnPresupuesto:hover {
+  background: var(--naranja-oscuro);
+}
+
+#btnLimpiar {
+  background: transparent;
+  color: var(--grafito);
+  border: 1px solid var(--borde);
+}
+
+#btnLimpiar:hover {
+  background: #f1f3f5;
+}
+
+/* ---------- Mensajes ---------- */
+#mensaje:not(:empty) {
+  margin: 20px 0 0;
+  padding: 12px 16px;
+  background: var(--naranja-claro);
+  border-left: 4px solid var(--naranja);
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+/* ---------- Presupuesto ---------- */
+#presupuesto:not(:empty) {
+  margin-top: 20px;
+  padding: 24px;
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+}
+
+#presupuesto h2 {
+  margin: 0 0 16px;
+  font-size: 1.15rem;
+  color: var(--grafito);
+}
+
+#presupuesto table {
+  width: 100%;
+  border-collapse: collapse;
+  border: none;
+  margin-bottom: 16px;
+}
+
+#presupuesto th,
+#presupuesto td {
+  padding: 10px 12px;
+  border: none;
+  border-bottom: 1px solid var(--borde);
+  text-align: left;
+}
+
+#presupuesto th {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  background: var(--grafito);
+}
+
+#presupuesto th:nth-child(2),
+#presupuesto td:nth-child(2) {
+  text-align: center;
+}
+
+#presupuesto th:last-child,
+#presupuesto td:last-child {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#presupuesto tr:nth-child(even) td {
+  background: #f8f9fa;
+}
+
+#presupuesto p {
+  margin: 4px 0;
+  text-align: right;
+  color: var(--suave);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Total ---------- */
+body > p:last-child {
+  margin-top: 20px;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: var(--grafito);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+}
+
+body > p:last-child br {
+  display: none;
+}
+
+body > p:last-child label {
+  margin: 0;
+  font-size: 1rem;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+#total {
+  width: 100%;
+  max-width: 200px;
+  min-width: 0;
+  padding: 6px 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: right;
+  color: var(--naranja);
+  background: transparent;
+  border: none;
+}
+
+#total:focus {
+  box-shadow: none;
+  background: transparent;
+}
+
+/* ---------- Móvil ---------- */
+@media (max-width: 560px) {
+  body {
+    padding: 20px 16px;
+  }
+
+  #formulario {
+    padding: 16px;
+  }
+
+  fieldset {
+    padding: 14px 14px 4px;
+  }
+
+  fieldset:first-of-type {
+    grid-template-columns: 1fr;
+  }
+
+  fieldset:nth-of-type(2) input[type="number"] {
+    width: 64px;
+    flex-shrink: 0;
+  }
+
+  button {
+    width: 100%;
+    margin: 0 0 10px;
+  }
+}
