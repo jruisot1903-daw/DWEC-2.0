@@ -88,127 +88,163 @@ const h11 = document.getElementById("h11");
 // for (elem of myArray)
 //     h21.innerHTML += " - " + elem;
 
-let myArray = new Array();
+// let myArray = new Array();
 
-myArray.push("Pepe");
-myArray.push(56);
-myArray.push(true);
-myArray.push("Ana");
-myArray.push("78.98");
-myArray.push(new Array(1,2,3));
-myArray.push({marca: "Ford", matricula: "123456A"});
-myArray.push(false);
-myArray.push(Math.PI);
+// myArray.push("Pepe");
+// myArray.push(56);
+// myArray.push(true);
+// myArray.push("Ana");
+// myArray.push("78.98");
+// myArray.push(new Array(1,2,3));
+// myArray.push({marca: "Ford", matricula: "123456A"});
+// myArray.push(false);
+// myArray.push(Math.PI);
 
-for(let elem = 0; elem < myArray.length; elem++){
+// for(let elem = 0; elem < myArray.length; elem++){
 
-    if((typeof myArray[elem] == "object") && (Object.hasOwn(myArray[elem],"marca") && (Object.hasOwn(myArray[elem],"matricula"))))
-        h21.innerHTML += "{Marca: "+myArray[elem].marca + ",Matricula: "+myArray[elem].matricula+"} - ";
-    else
-        if(elem == (myArray.length - 1))
-        h21.innerHTML += myArray[elem];
-        else
-            h21.innerHTML += myArray[elem] +" - ";
-}
-
-
-
-// Prueba con Filter
+//     if((typeof myArray[elem] == "object") && (Object.hasOwn(myArray[elem],"marca") && (Object.hasOwn(myArray[elem],"matricula"))))
+//         h21.innerHTML += "{Marca: "+myArray[elem].marca + ",Matricula: "+myArray[elem].matricula+"} - ";
+//     else
+//         if(elem == (myArray.length - 1))
+//         h21.innerHTML += myArray[elem];
+//         else
+//             h21.innerHTML += myArray[elem] +" - ";
+// }
 
 
 
-let myBooleanArray = myArray.filter((elem) => {
-    return (typeof elem == "boolean");
-})
-
-h21.textContent = "";
-for (let elem of myBooleanArray)
-    h21.textContent += elem + " - ";
+// // Prueba con Filter
 
 
 
+// let myBooleanArray = myArray.filter((elem) => {
+//     return (typeof elem == "boolean");
+// })
 
-// Prueba con Maps
-
-
-
-let myMap = new Map();
-
-myMap.set(1,"Pepe");
-myMap.set(2,"María");
-myMap.set(true,"Antonio");
-myMap.set("123456c","Ana");
-myMap.set(1,"Nombre Falso");
-
-h21.innerText = "";
-for ([clave, valor] of myMap)
-    h21.innerHTML += `Clave ${clave}: ${valor}<br>`;
-
-h21.innerHTML += `Tamaño: ${myMap.size}`;
+// h21.textContent = "";
+// for (let elem of myBooleanArray)
+//     h21.textContent += elem + " - ";
 
 
 
-// Prueba DATE
 
-const calendario = document.getElementById("date");
-let myDate = new Date(2004,2,19);
-let dateNow = new Date();
+// // Prueba con Maps
 
-h21.innerHTML = "Llevas vivo "+ (dateNow - myDate) / (1000*60*60*24*365) +" años";
 
-calendario.onchange = function (){
-    h21.innerHTML = "Desde la fecha seleccionada llevas vivo "+ (new Date(this.value) - myDate) / (1000*60*60*24*365) +" años";
-}
 
-h21.innerHTML = dateNow.toLocaleDateString();  
+// let myMap = new Map();
 
-// Propiedades del Objeto NAVIGATOR
+// myMap.set(1,"Pepe");
+// myMap.set(2,"María");
+// myMap.set(true,"Antonio");
+// myMap.set("123456c","Ana");
+// myMap.set(1,"Nombre Falso");
 
-h21.innerHTML = " ";
+// h21.innerText = "";
+// for ([clave, valor] of myMap)
+//     h21.innerHTML += `Clave ${clave}: ${valor}<br>`;
 
-let navObj = new Object({
-    userAgent: navigator.userAgent,
-    platform: navigator.platform,
-    language: navigator.language,
-    languages: navigator.languages,
-    onLine: navigator.onLine,
-    cookie: navigator.cookieEnabled,
-    hardwar: navigator.hardwareConcurrency,
-    memory: navigator.deviceMemory,
-    vendor: navigator.vendor,
-    product: navigator.product
-});
+// h21.innerHTML += `Tamaño: ${myMap.size}`;
 
-h21.innerHTML += "Navegador y Sitema:<br>"+  navObj.userAgent + "<br>";
-h21.innerHTML += "Plataforma del SO: "+  navObj.platform + "<br>";
-h21.innerHTML += "Lenguaje: "+  navObj.language + "<br>";
-h21.innerHTML += "Idiomas: "+  navObj.languages + "<br>";
-h21.innerHTML += "Conectado a internet?: "+  navObj.onLine + "<br>";
-h21.innerHTML += "Cookies permitidas?: "+  navObj.cookie + "<br>";
-h21.innerHTML += "Numeros de nucleos CPU: "+  navObj.hardwar + "<br>";
-h21.innerHTML += "Memoria RAM: "+  navObj.memory + "<br>";
-h21.innerHTML += "Vendedor: "+  navObj.vendor + "<br>";
-h21.innerHTML += "Producto: "+  navObj.product + "<br>";
 
-// Propiedades del Objeto screen
 
-h21.innerHTML = "";
+// // Prueba DATE
 
-h21.innerHTML = `Ancho total: ${screen.width}, Alto total: ${screen.height}<br>`;
-h21.innerHTML += `Ancho disponible: ${screen.availWidth}, Alto disponible   : ${screen.availHeight}`;
-h21.innerHTML +=`<br>Numero de colores : ${screen.colorDepth}`;
+// const calendario = document.getElementById("date");
+// let myDate = new Date(2004,2,19);
+// let dateNow = new Date();
 
-h21.innerHTML +=`<br>Orientacion: ${screen.orientation.angle}`;
+// h21.innerHTML = "Llevas vivo "+ (dateNow - myDate) / (1000*60*60*24*365) +" años";
 
-if(screen.orientation.angle == 0){
-    h21.innerHTML = "La pantalla es landscape";
-}else{
-    h21.innerHTML = "La pantalla es portrail";
-}
+// calendario.onchange = function (){
+//     h21.innerHTML = "Desde la fecha seleccionada llevas vivo "+ (new Date(this.value) - myDate) / (1000*60*60*24*365) +" años";
+// }
 
-document.body.onresize = function () {
-    if (screen.height > screen.width) 
-        h21.innerHTML = "landscape";
-    else 
-        h21.innerHTML = "portrait";
+// h21.innerHTML = dateNow.toLocaleDateString();  
+
+// // Propiedades del Objeto NAVIGATOR
+
+// h21.innerHTML = " ";
+
+// let navObj = new Object({
+//     userAgent: navigator.userAgent,
+//     platform: navigator.platform,
+//     language: navigator.language,
+//     languages: navigator.languages,
+//     onLine: navigator.onLine,
+//     cookie: navigator.cookieEnabled,
+//     hardwar: navigator.hardwareConcurrency,
+//     memory: navigator.deviceMemory,
+//     vendor: navigator.vendor,
+//     product: navigator.product
+// });
+
+// h21.innerHTML += "Navegador y Sitema:<br>"+  navObj.userAgent + "<br>";
+// h21.innerHTML += "Plataforma del SO: "+  navObj.platform + "<br>";
+// h21.innerHTML += "Lenguaje: "+  navObj.language + "<br>";
+// h21.innerHTML += "Idiomas: "+  navObj.languages + "<br>";
+// h21.innerHTML += "Conectado a internet?: "+  navObj.onLine + "<br>";
+// h21.innerHTML += "Cookies permitidas?: "+  navObj.cookie + "<br>";
+// h21.innerHTML += "Numeros de nucleos CPU: "+  navObj.hardwar + "<br>";
+// h21.innerHTML += "Memoria RAM: "+  navObj.memory + "<br>";
+// h21.innerHTML += "Vendedor: "+  navObj.vendor + "<br>";
+// h21.innerHTML += "Producto: "+  navObj.product + "<br>";
+
+// // Propiedades del Objeto screen
+
+// h21.innerHTML = "";
+
+// h21.innerHTML = `Ancho total: ${screen.width}, Alto total: ${screen.height}<br>`;
+// h21.innerHTML += `Ancho disponible: ${screen.availWidth}, Alto disponible   : ${screen.availHeight}`;
+// h21.innerHTML +=`<br>Numero de colores : ${screen.colorDepth}`;
+
+// h21.innerHTML +=`<br>Orientacion: ${screen.orientation.angle}`;
+
+// if(screen.orientation.angle == 0){
+//     h21.innerHTML = "La pantalla es landscape";
+// }else{
+//     h21.innerHTML = "La pantalla es portrail";
+// }
+
+// document.body.onresize = function () {
+//     if (screen.height > screen.width) 
+//         h21.innerHTML = "landscape";
+//     else 
+//         h21.innerHTML = "portrait";
+// }
+
+
+// const ball = document.getElementById("ball");
+
+// console.log("Alto: " + screen.height);
+// ball.style.top = (parseInt(screen.availHeight/2) - 50) + "px";
+// ball.style.left = "0px";
+
+// const intervalo = setInterval(function () {
+//     let izq = parseInt(ball.style.left.substring(0, ball.style.left.length-2));
+//     if (izq < (screen.width - 100))
+//         ball.style.left = (izq + 10) + "px";
+// }, 100);
+
+/****************************************************************** */
+
+// document.getElementById("bStop").addEventListener("click", () => {
+//     clearInterval(intervalo);
+//     ball.style.backgroundColor = "#569";
+// })
+
+// Objeto windows
+
+// Abrimos ventanas
+
+
+var usersWindow = null;
+
+document.getElementById("aSendMail").onclick = function () {
+    if ((!usersWindow) || (usersWindow.closed))
+        usersWindow = window.open("ventanaPrueba.html","_blank", "width=350px,height=250px , top= 500px,left = 600px");
+    else {
+        alert("Ya tienes abierta la ventana");
+        usersWindow.focus();
+    }   
 }

@@ -54,3 +54,16 @@ footer{
     width: 150px;
     height: 100px;
 }
+
+#ball {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 50%;
+    text-align: center;
+    left: 0px;
+    transition: left 0.2s;
+}
+
