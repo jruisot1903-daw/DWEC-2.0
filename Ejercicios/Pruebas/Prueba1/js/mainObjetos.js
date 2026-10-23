@@ -35,7 +35,7 @@ const h11 = document.getElementById("h11");
 
 // Object.defineProperties(myAlumn3, {
 //     name: {configurable: true, enumerable: false, writable:false, value:"Pepe"},
-//     surname: {configurable: true, enumerable: false, writable:false, value:"Pérez"}    
+//     surname: {configurable: true, enumerable: false, writable:false, value:"Pérez"}
 // });
 
 // Object.defineProperty(myAlumn3, "age", {configurable: true, enumerable: true, writable:false, value:23});
@@ -111,11 +111,7 @@ const h11 = document.getElementById("h11");
 //             h21.innerHTML += myArray[elem] +" - ";
 // }
 
-
-
 // // Prueba con Filter
-
-
 
 // let myBooleanArray = myArray.filter((elem) => {
 //     return (typeof elem == "boolean");
@@ -125,12 +121,7 @@ const h11 = document.getElementById("h11");
 // for (let elem of myBooleanArray)
 //     h21.textContent += elem + " - ";
 
-
-
-
 // // Prueba con Maps
-
-
 
 // let myMap = new Map();
 
@@ -146,8 +137,6 @@ const h11 = document.getElementById("h11");
 
 // h21.innerHTML += `Tamaño: ${myMap.size}`;
 
-
-
 // // Prueba DATE
 
 // const calendario = document.getElementById("date");
@@ -160,7 +149,7 @@ const h11 = document.getElementById("h11");
 //     h21.innerHTML = "Desde la fecha seleccionada llevas vivo "+ (new Date(this.value) - myDate) / (1000*60*60*24*365) +" años";
 // }
 
-// h21.innerHTML = dateNow.toLocaleDateString();  
+// h21.innerHTML = dateNow.toLocaleDateString();
 
 // // Propiedades del Objeto NAVIGATOR
 
@@ -207,12 +196,11 @@ const h11 = document.getElementById("h11");
 // }
 
 // document.body.onresize = function () {
-//     if (screen.height > screen.width) 
+//     if (screen.height > screen.width)
 //         h21.innerHTML = "landscape";
-//     else 
+//     else
 //         h21.innerHTML = "portrait";
 // }
-
 
 // const ball = document.getElementById("ball");
 
@@ -237,14 +225,60 @@ const h11 = document.getElementById("h11");
 
 // Abrimos ventanas
 
-
 var usersWindow = null;
+const info = document.getElementById("info");
+const login = document.getElementById("login");
+const mail = document.getElementById("mail");
+const href = document.getElementById("href");
 
-document.getElementById("aSendMail").onclick = function () {
-    if ((!usersWindow) || (usersWindow.closed))
-        usersWindow = window.open("ventanaPrueba.html","_blank", "width=350px,height=250px , top= 500px,left = 600px");
+const url = "http://127.0.0.1:5500/" 
+
+//location.href = "http://127.0.0.1:5500/Ejercicios/Pruebas/Prueba1/ventanaPrueba.html";
+
+href.addEventListener("click", function () {
+ // location.assign("http://127.0.0.1:5500/Ejercicios/Pruebas/Prueba1/ventanaPrueba.html");
+    location.replace(url+"Ejercicios/Pruebas/Prueba1/ventanaPrueba.html");
+  
+});
+
+/********************************************************************** */
+document.getElementById("aSendMail").onclick = function (e) {
+  e.preventDefault();
+  try {
+    if (login.value == "") throw Error("Nombre está vacío!");
+    if (document.getElementById("pass").value == "")
+      throw Error("Password está vacío!");
+    if (mail.value == "") throw Error("Email está vacío!");
+
+    if (!usersWindow || usersWindow.closed)
+      usersWindow = window.open(
+        "./ventanaPrueba.html",
+        "_blank",
+        "width=650,height=850",
+      );
     else {
-        alert("Ya tienes abierta la ventana");
-        usersWindow.focus();
-    }   
-}
+      info = "Ya tienes la ventana email abierta";
+      usersWindow.focus();
+    }
+
+    // Pasamos Login e email:
+    usersWindow.onload = function () {
+      usersWindow.document.getElementById("nombre").value = login.value;
+      usersWindow.document.getElementById("mail").value = mail.value;
+    };
+  } catch (err) {
+    info.innerHTML = "<b style='color:red;'>" + err + "</b>";
+    setTimeout(function () {
+      info.innerHTML = "";
+    }, 3000);
+  }
+};
+
+document.getElementById("aMoveWindow").onclick = function () {
+  if (usersWindow) {
+    usersWindow.moveBy(500, 300);
+    usersWindow.focus();
+  } else {
+    alert("La ventana ya se cerró");
+  }
+};
