@@ -231,14 +231,13 @@ const login = document.getElementById("login");
 const mail = document.getElementById("mail");
 const href = document.getElementById("href");
 
-const url = "http://127.0.0.1:5500/" 
+const url = "http://127.0.0.1:5500/";
 
 //location.href = "http://127.0.0.1:5500/Ejercicios/Pruebas/Prueba1/ventanaPrueba.html";
 
 href.addEventListener("click", function () {
- // location.assign("http://127.0.0.1:5500/Ejercicios/Pruebas/Prueba1/ventanaPrueba.html");
-    location.replace(url+"Ejercicios/Pruebas/Prueba1/ventanaPrueba.html");
-  
+  // location.assign("http://127.0.0.1:5500/Ejercicios/Pruebas/Prueba1/ventanaPrueba.html");
+  location.replace(url + "Ejercicios/Pruebas/Prueba1/ventanaPrueba.html");
 });
 
 /********************************************************************** */
@@ -282,3 +281,36 @@ document.getElementById("aMoveWindow").onclick = function () {
     alert("La ventana ya se cerró");
   }
 };
+
+// Expresiones regulares
+
+let texto =
+  "Galopa, galopa, caballo galopa corre por mis venas y el caballo galopa to el dia tirao en la calle perros callejeros con caballo el alma rota";
+
+
+// Modificadores: i --> busca mayuscula o minuscula , g --> busqueda global, m --> buscar multiples lineas
+
+let re1 = /caballo/gim;
+let re2 = new RegExp("caballo", "igm");
+
+const textNav = document.getElementById("nav1").innerHTML;
+
+document.getElementById("nav1").innerHTML = textNav.replaceAll('href="#"', 'href="#"' + 'style="color:green"');
+
+// if (re2.test(texto)) {
+//   info.innerHTML = "Galopa Galopa Galopa";
+// } else {
+//   info.innerHTML = "No galopa";
+// }
+
+//console.log(re1.exec(texto));
+
+// let result = null; 
+// let myIndex = re1.lastIndex;
+// while (re1.test(texto)) {
+//     re1.lastIndex = myIndex;
+//     result = re1.exec(texto);
+//     myIndex = re1.lastIndex;
+//     console.log('Encontrado' + result["0"] + ' en la posición ' + result.index + '.');
+//     console.log("------------------------------------------");
+// }
