@@ -1,38 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-  <body>
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Pruebas</title>
-      <link rel="stylesheet" href="./css/style.css" />
-      <!-- <script src="js/main.js" defer></script> -->
-      <script src="./js/mainObjetos.js" defer></script>
-      <noscript>
-        <h1>
-          Esta app requiere JavaScript para su funcionamiento. Actívelo,
-          please!!
-        </h1>
-      </noscript>
-      <link rel="shortcut icon" href="./img/R.png" type="image/x-icon" />
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pruebas</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/mainObjetos.js" defer></script>
+    <noscript>
+        <h1>Esta app requiere JavaScript para su funcionamiento. Actívelo, please!!</h1>
+    </noscript>
+</head>
+<body>
     <nav id="nav1">
-      <a href="#" id="aSendMail">Enviar email</a>
-      <a href="#" id="aMoveWindow">Mover y redimensionar</a>
-      <a href="#" id="history1">Ir a siguiente en el historial</a>
-      <a href="#" id="href">Probar location href</a>
+        <a href="#" id="aSendMail">Enviar email</a>
+        <a href="#" id="aMoveWindow">Mover y redimensionar</a>
+        <a href="#" id="aMail">Enviar email</a>
+        <a href="#" id="aUsuarios">Usuarios</a>
     </nav>
     <h2 id="info"></h2>
-
-    <form action="#" id="form1">
-      <label for="">Login:</label>
-      <input type="text" name="" id="login" value="Pepe" autofocus />
-      <br />
-      <label for="">Password:</label>
-      <input type="password" name="" id="pass" />
-      <br />
-      <label for="">Email:</label>
-      <input type="email" name="" id="mail" value="pepe@mail.com" />
+    <p style="color:red;font-weight: bolder;" id="exp"></p>
+    <hr>
+    <form action="#" method="post" id="form1">
+        <label for="">Login:</label>
+        <input type="text" name="" id="login" value="Pepe" autofocus>
+        <br>
+        <label for="">Password:</label>
+        <input type="password" name="" id="pass">
+         <br>
+        <label for="">Email:</label>
+        <input type="email" name="" id="mail" value="pepe@mail.com">
+        <br>
+        <label for="dni">DNI:</label>
+        <input type="text" name="dni" id="dni" value="11122233P">
+        <br>
+        <label for="urls">Direcciones web de la empresa:</label><br>
+        <textarea name="urls" id="urls" cols="50" rows="15">
+        asdadad
+        adadada
+        sdas
+        dadadasdasd
+        dasdadasd
+        https://www.pedroespiosa.com
+        dadadasdasddadadas
+        dasdadasd
+        </textarea>
+        <hr>
+        <button id="bEnviar">Enviar</button>
     </form>
   </body>
 </html>

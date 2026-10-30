@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Socios - Cerro Sport</title>
+    <link rel="shortcut icon" href="./img/LogoCerro-Transparente.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/main.js" defer></script>
+</head>
+<body>
+    
+    <header class="cabecera-principal">
+        <div class="contenedor-logo">
+            <div class="fila-superior-logo">
+                <img src="./img/LogoCerro-Transparente.png" alt="Logo Cerro Sport" class="imagen-logo">
+                <span class="texto-logo">Cerro Sport</span>
+            </div>
+            <p class="subtitulo-logo">Gitanicos X Cobre</p>
+        </div>
+        <div class="contenedor-fecha-hora">
+            <div id="fecha-hoy">Miércoles, 28 de octubre de 2026</div>
+            <div id="hora-actual">05:29:51</div>
+        </div>
+    </header>
+
+    <main class="diseno-principal">
+        <!-- Columna Izquierda: Listado y Ficha -->
+        <div class="columna-principal">
+            
+            <!-- Listado de Socios -->
+            <section id="seccion-listado">
+                <div class="cabecera-seccion">
+                    <h2>Listado de Socios</h2>
+                    <button id="boton-pantalla-completa">Pantalla completa</button>
+                </div>
+                
+                <div class="controles-busqueda">
+                    <input type="text" id="entrada-buscar" placeholder="Buscar por nombre, apellidos o email...">
+                    <select id="selector-filtro-actividad">
+                        <option value="todos">Todas las actividades</option>
+                        <option value="natación">Natación</option>
+                        <option value="yoga">Yoga</option>
+                        <option value="pádel">Pádel</option>
+                        <option value="musculación">Musculación</option>
+                        <option value="spinning">Spinning</option>
+                        <option value="pilates">Pilates</option>
+                    </select>
+                    <select id="selector-orden">
+                        <option value="ninguno">Ordenar por...</option>
+                        <option value="nombre">Nombre</option>
+                        <option value="apellidos">Apellidos</option>
+                        <option value="jovenes">Más jóvenes primero</option>
+                        <option value="antiguos">Más antiguos primero</option>
+                    </select>
+                </div>
+
+                <div class="contenedor-tabla">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nombre</th>
+                                <th>Email</th>
+                                <th>Edad</th>
+                                <th>Actividades</th>
+                                <th>Cuota</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cuerpo-tabla-socios">
+                            <tr>
+                                <td>
+                                    <div class="avatar-id">
+                                        <div class="avatar">LM</div>
+                                        <span>SOC-0001</span>
+                                    </div>
+                                </td>
+                                <td>Lucía Martín R.</td>
+                                <td class="celda-email">lu**********@correo.es</td>
+                                <td>31 años</td>
+                                <td>natación, yoga</td>
+                                <td>35.00 €</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Ficha de Socio -->
+            <section>
+                <h2>Consulta de Ficha por DNI</h2>
+                <div class="controles-busqueda controles-dni">
+                    <input type="text" id="entrada-dni-buscar" placeholder="Introduce DNI (ej: 12345678Z)...">
+                    <button id="boton-consultar-dni">Consultar</button>
+                </div>
+                <div id="resultado-ficha">
+                    <p class="texto-marcador">Introduce un DNI para ver la ficha detallada.</p>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Columna Derecha: Alta y Estadísticas -->
+        <div class="columna-principal">
+            
+            <!-- Alta de Socio -->
+            <section>
+                <h2>Nuevo Socio</h2>
+                <div id="mensaje-alta"></div>
+                <form id="formulario-alta">
+                    <div class="grupo-formulario">
+                        <label>Nombre y Apellidos</label>
+                        <input type="text" id="alta-nombre" placeholder="Ej: María José">
+                        <span class="mensaje-error" id="error-nombre"></span>
+                    </div>
+                    <div class="grupo-formulario">
+                        <label>DNI</label>
+                        <input type="text" id="alta-dni" placeholder="Ej: 12345678Z">
+                        <span class="mensaje-error" id="error-dni"></span>
+                    </div>
+                    <div class="grupo-formulario">
+                        <label>Email</label>
+                        <input type="email" id="alta-email" placeholder="Ej: ana@correo.es">
+                        <span class="mensaje-error" id="error-email"></span>
+                    </div>
+                    <div class="grupo-formulario">
+                        <label>Teléfono</label>
+                        <input type="text" id="alta-telefono" placeholder="Ej: 612 345 678">
+                        <span class="mensaje-error" id="error-telefono"></span>
+                    </div>
+                    <div class="grupo-formulario">
+                        <label>Fecha de Nacimiento (dd/mm/aaaa)</label>
+                        <input type="text" id="alta-fnac" placeholder="Ej: 05/06/2000">
+                        <span class="mensaje-error" id="error-fnac"></span>
+                    </div>
+                    <div class="grupo-formulario">
+                        <label>Actividades (selecciona al menos una)</label>
+                        <div class="rejilla-checkbox">
+                            <label><input type="checkbox" name="actividad" value="natación"> Natación</label>
+                            <label><input type="checkbox" name="actividad" value="yoga"> Yoga</label>
+                            <label><input type="checkbox" name="actividad" value="pádel"> Pádel</label>
+                            <label><input type="checkbox" name="actividad" value="musculación"> Musculación</label>
+                            <label><input type="checkbox" name="actividad" value="spinning"> Spinning</label>
+                            <label><input type="checkbox" name="actividad" value="pilates"> Pilates</label>
+                        </div>
+                        <span class="mensaje-error" id="error-actividades"></span>
+                    </div>
+                    <div class="grupo-formulario">
+                        <label>Cuota mensual (€)</label>
+                        <input type="number" id="alta-cuota" value="35" min="1" step="any">
+                    </div>
+                    <button type="submit" class="boton-completo">Dar de alta socio</button>
+                </form>
+            </section>
+
+            <!-- Estadísticas -->
+            <section>
+                <h2>Estadísticas del Club</h2>
+                <div class="rejilla-estadisticas" id="contenedor-estadisticas">
+                    <div class="tarjeta-stat"><h3>Total Socios</h3><p>10</p></div>
+                    <div class="tarjeta-stat"><h3>Ingresos Mes</h3><p>365.00 €</p></div>
+                    <div class="tarjeta-stat"><h3>Cuota Media</h3><p>36.50 €</p></div>
+                    <div class="tarjeta-stat"><h3>Edad Media</h3><p>34.2 años</p></div>
+                    <div class="tarjeta-stat"><h3>Edad Mín / Máx</h3><p>17 / 58</p></div>
+                    <div class="tarjeta-stat"><h3>Más Popular</h3><p class="stat-texto-sm">Natación (6)</p></div>
+                    <div class="tarjeta-stat"><h3>¿Menores de edad?</h3><p>Sí</p></div>
+                    <div class="tarjeta-stat"><h3>¿Con actividad?</h3><p>Sí</p></div>
+                    <div class="tarjeta-stat tarjeta-stat-amplia"><h3>Top 3 Veteranos</h3><p class="stat-texto-xs">Carmen J., Carlos S., Manuel R.</p></div>
+                    <div class="tarjeta-stat tarjeta-stat-amplia"><h3>Dominios Email</h3><p class="stat-texto-xs">correo.es, gmail.com, yahoo.es, outlook.com</p></div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+</body>
+</html>

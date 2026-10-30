@@ -225,77 +225,77 @@ const h11 = document.getElementById("h11");
 
 // Abrimos ventanas
 
-var usersWindow = null;
-const info = document.getElementById("info");
-const login = document.getElementById("login");
-const mail = document.getElementById("mail");
-const href = document.getElementById("href");
+// var usersWindow = null;
+// const info = document.getElementById("info");
+// const login = document.getElementById("login");
+// const mail = document.getElementById("mail");
+// const href = document.getElementById("href");
 
-const url = "http://127.0.0.1:5500/";
+// const url = "http://127.0.0.1:5500/";
 
-//location.href = "http://127.0.0.1:5500/Ejercicios/Pruebas/Prueba1/ventanaPrueba.html";
+// //location.href = "http://127.0.0.1:5500/Ejercicios/Pruebas/Prueba1/ventanaPrueba.html";
 
-href.addEventListener("click", function () {
-  // location.assign("http://127.0.0.1:5500/Ejercicios/Pruebas/Prueba1/ventanaPrueba.html");
-  location.replace(url + "Ejercicios/Pruebas/Prueba1/ventanaPrueba.html");
-});
+// href.addEventListener("click", function () {
+//   // location.assign("http://127.0.0.1:5500/Ejercicios/Pruebas/Prueba1/ventanaPrueba.html");
+//   location.replace(url + "Ejercicios/Pruebas/Prueba1/ventanaPrueba.html");
+// });
 
-/********************************************************************** */
-document.getElementById("aSendMail").onclick = function (e) {
-  e.preventDefault();
-  try {
-    if (login.value == "") throw Error("Nombre está vacío!");
-    if (document.getElementById("pass").value == "")
-      throw Error("Password está vacío!");
-    if (mail.value == "") throw Error("Email está vacío!");
+// /********************************************************************** */
+// document.getElementById("aSendMail").onclick = function (e) {
+//   e.preventDefault();
+//   try {
+//     if (login.value == "") throw Error("Nombre está vacío!");
+//     if (document.getElementById("pass").value == "")
+//       throw Error("Password está vacío!");
+//     if (mail.value == "") throw Error("Email está vacío!");
 
-    if (!usersWindow || usersWindow.closed)
-      usersWindow = window.open(
-        "./ventanaPrueba.html",
-        "_blank",
-        "width=650,height=850",
-      );
-    else {
-      info = "Ya tienes la ventana email abierta";
-      usersWindow.focus();
-    }
+//     if (!usersWindow || usersWindow.closed)
+//       usersWindow = window.open(
+//         "./ventanaPrueba.html",
+//         "_blank",
+//         "width=650,height=850",
+//       );
+//     else {
+//       info = "Ya tienes la ventana email abierta";
+//       usersWindow.focus();
+//     }
 
-    // Pasamos Login e email:
-    usersWindow.onload = function () {
-      usersWindow.document.getElementById("nombre").value = login.value;
-      usersWindow.document.getElementById("mail").value = mail.value;
-    };
-  } catch (err) {
-    info.innerHTML = "<b style='color:red;'>" + err + "</b>";
-    setTimeout(function () {
-      info.innerHTML = "";
-    }, 3000);
-  }
-};
+//     // Pasamos Login e email:
+//     usersWindow.onload = function () {
+//       usersWindow.document.getElementById("nombre").value = login.value;
+//       usersWindow.document.getElementById("mail").value = mail.value;
+//     };
+//   } catch (err) {
+//     info.innerHTML = "<b style='color:red;'>" + err + "</b>";
+//     setTimeout(function () {
+//       info.innerHTML = "";
+//     }, 3000);
+//   }
+// };
 
-document.getElementById("aMoveWindow").onclick = function () {
-  if (usersWindow) {
-    usersWindow.moveBy(500, 300);
-    usersWindow.focus();
-  } else {
-    alert("La ventana ya se cerró");
-  }
-};
+// document.getElementById("aMoveWindow").onclick = function () {
+//   if (usersWindow) {
+//     usersWindow.moveBy(500, 300);
+//     usersWindow.focus();
+//   } else {
+//     alert("La ventana ya se cerró");
+//   }
+// };
 
-// Expresiones regulares
+// // Expresiones regulares
 
-let texto =
-  "Galopa, galopa, caballo galopa corre por mis venas y el caballo galopa to el dia tirao en la calle perros callejeros con caballo el alma rota";
+// let texto =
+//   "Galopa, galopa, caballo galopa corre por mis venas y el caballo galopa to el dia tirao en la calle perros callejeros con caballo el alma rota";
 
 
-// Modificadores: i --> busca mayuscula o minuscula , g --> busqueda global, m --> buscar multiples lineas
+// // Modificadores: i --> busca mayuscula o minuscula , g --> busqueda global, m --> buscar multiples lineas
 
-let re1 = /caballo/gim;
-let re2 = new RegExp("caballo", "igm");
+// let re1 = /caballo/gim;
+// let re2 = new RegExp("caballo", "igm");
 
-const textNav = document.getElementById("nav1").innerHTML;
+// const textNav = document.getElementById("nav1").innerHTML;
 
-document.getElementById("nav1").innerHTML = textNav.replaceAll('href="#"', 'href="#"' + 'style="color:green"');
+// document.getElementById("nav1").innerHTML = textNav.replaceAll('href="#"', 'href="#"' + 'style="color:green"');
 
 // if (re2.test(texto)) {
 //   info.innerHTML = "Galopa Galopa Galopa";
@@ -314,3 +314,52 @@ document.getElementById("nav1").innerHTML = textNav.replaceAll('href="#"', 'href
 //     console.log('Encontrado' + result["0"] + ' en la posición ' + result.index + '.');
 //     console.log("------------------------------------------");
 // }
+
+// buscar elemento de html mirar que clase pertenece y cambiarla 
+// EJ --> <p class = "rojo"></p> cambiarlo a <p class = "verde"></p>
+
+// EJEMPLOS EXPRESIONES REGULARES
+
+const info = document.getElementById("info");
+const login = document.getElementById("login");
+const mail = document.getElementById("mail");
+const dni = document.getElementById("dni");
+const tel = document.getElementById("tel");
+const urls = document.getElementById("urls");
+
+var reDNI = /^([XYZ]\d{7}|\d{8}[A-Z])$/i;
+var reEmail = /^[^\s@][\w\d-_(\.){1}]+@[\w\d-_\.]+.\w{2,}$/;
+var reTel = /^(\+\d{2})?\d{9}$/;
+var reUrl = /^https?:\/\/|www\.\S+$/im;
+/*********************************************************************************** */
+document.getElementById("bEnviar").onclick = function (e) {
+    e.preventDefault();
+    if(!reDNI.test(dni.value.trim()))
+     info.innerHTML = "<b>DNI incorrecto</b>"
+   else 
+     info.innerHTML = "<b>DNI correcto</b>";
+
+   if(!reEmail.test(mail.value)){
+     info.innerHTML = "<b>EMAIL incorrecto</b>"
+   }else{ 
+     info.innerHTML = "<b>EMAIL correcto</b>";
+   }
+  
+  let myPhone = tel.value.trim(); // quitamos los espacios de alante y de atras
+
+  myPhone = myPhone.replaceAll(" ", "");
+
+  if(!reTel.test(myPhone)){
+    info.innerHTML = "<b>TELEFONO incorrecto</b>"
+  }else{ 
+    info.innerHTML = "<b>TELEFONO correcto</b>";
+  }
+}
+
+tel.addEventListener("input",function(){
+  var blanco = 0;
+
+  if(((this.value.length % 3) == 0) && (this.value.length < 11)){
+    this.value = this.value +" ";
+  }
+})
