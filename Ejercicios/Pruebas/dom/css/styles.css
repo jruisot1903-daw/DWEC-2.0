@@ -1,0 +1,32 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    box-sizing: border-box;
+    margin: 0.5%;
+    padding: 0.5%;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: rgb(157, 200, 213);
+}
+
+.pares {
+    background-color: aquamarine;
+    color: black;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 0.5%;
+}
+
+.impares {
+    background-color: black;
+    color: aquamarine;
+    border: 1px solid aquamarine;
+    border-radius: 8px;
+    padding: 0.5%;
+}
