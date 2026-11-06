@@ -4,6 +4,7 @@
     box-sizing: border-box;
     margin: 0.5%;
     padding: 0.5%;
+    /* overflow: hidden; */
 }
 
 html, body {
@@ -13,6 +14,19 @@ html, body {
 
 body {
     background-color: rgb(157, 200, 213);
+}
+
+.section1 {
+    float: left;
+    width: 45%;
+    height: 40%;
+    border: 2px solid black;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.section1 img {
+    height: 75%;
 }
 
 .pares {
