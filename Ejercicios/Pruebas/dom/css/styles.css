@@ -27,6 +27,7 @@ body {
 
 .section1 img {
     height: 75%;
+    max-width: 90%;
 }
 
 .pares {
@@ -43,4 +44,19 @@ body {
     border: 1px solid aquamarine;
     border-radius: 8px;
     padding: 0.5%;
+}
+
+.modoNoche {
+    background-color:#695555;
+    color: #EDEBEB;
+}
+
+.modoNoche a {
+    background-color:#8F84B0;
+    color:#EAE9F0;
+}
+
+.modoNoche button {
+    background-color:rgb(152, 151, 151);
+    color:rgb(255, 255, 255);
 }

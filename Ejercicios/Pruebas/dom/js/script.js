@@ -33,152 +33,172 @@ for (let op of opRadio){
 const info = document.getElementById("info");
 var listaPaises = document.getElementsByTagName("li");
 const opRadio = document.getElementsByName("edad");
+const sections1 = document.getElementsByClassName("section1");
+const lista = document.getElementById("paises");
 
 const oplista1 = Array.from(document.getElementsByClassName("pares"));
 const oplista2 = Array.from(document.getElementsByClassName("impares"));
 
-info.innerHTML = "Opciones del radio edad: ";
-for (let op of opRadio) info.innerHTML += op.value + ", ";
+sections1[1].getElementsByTagName("img")[0].setAttribute("src", "../images.jpg");
 
-let nuevoNodo = createNode("a", "Registrarse", "");
-if (nuevoNodo) {
-  nuevoNodo.href = "#";
-  document.getElementById("nav1").appendChild(nuevoNodo);
+info.innerHTML = "Opciones del radio edad: "; 
+for (let op of opRadio)
+    info.innerHTML += op.value + ", ";
+
+
+  let nuevoNodo = createNode("a", "Registrarse", "")
+    if (nuevoNodo) {
+        nuevoNodo.href = "#";
+        document.getElementById("nav1").appendChild(nuevoNodo);
+    }
+
+let enlaceImagen = createNode("a", "Cambiar imagen", "", "background-color:#1276af;border-radius:8px; color:white; padding:0.5%;margin:1%;cursor:pointer");
+let borraAtributo = createNode("a", "Borrar atributo", "", "background-color:#1276af;border-radius:8px; color:white; padding:0.5%;margin:1%;cursor:pointer");
+
+if (sections1.length >= 2) {
+    sections1[1].appendChild(enlaceImagen);
+    sections1[1].appendChild(borraAtributo);
+
+    enlaceImagen.onclick = function () {
+        sections1[1].getElementsByTagName("img")[0].setAttribute("src", "../images2.jpg");
+    }
+
+    borraAtributo.onclick = function () {
+        sections1[1].getElementsByTagName("img")[0].removeAttribute("src");
+    }
 }
 
-document.getElementById("bChangeClassStyle").onclick = function () {
-  for (let op of oplista1)
-    if (op.className == "pares") op.className = "impares";
-    else op.className = "pares";
+/*Propiedades de los nodos*/
 
-  for (let op of oplista2)
-    if (op.className == "pares") op.className = "impares";
-    else op.className = "pares";
-};
+console.log("Atributos: "+lista.attributes[0].name+", Valor del atributo: "+lista.attributes[0].value);
+
+// chilNodes nos devuleve todos los elementos no solo los nodos , texto etc ect ....
+// for(let elem of lista.childNodes){
+//   console.log("Elemento: "+elem);
+// }
+
+// con children solo nos devuelve los elementos que sean nodos
+for(let elem of lista.children){
+  console.dir(elem);
+}
+
+console.dir(lista.firstElementChild);
+
+
+
+/*********************************************************************** */
+document.getElementById("bChangeClassStyle").onclick = function () {
+    
+    for (let op of oplista1)
+        if (op.className == "pares")
+            op.className = "impares";
+        else
+            op.className = "pares";
+
+    for (let op of oplista2)
+        if (op.className == "pares")
+            op.className = "impares";
+        else
+            op.className = "pares";
+}
 
 document.getElementById("bNuevoPais").onclick = function () {
-  listaPaises = document.getElementsByTagName("li");
-  let nuevoPais = document.getElementById("nuevoPais").value;
 
-  if (nuevoPais == "") info.innerHTML = "Debe escribir un País";
-  else {
-    // Insertamos nuevo nodo en la lista
-    // if ((listaPaises.length % 2) == 0)
-    //     nuevoNodoPais.className = "impares";
-    // else
-    //     nuevoNodoPais.className = "pares";
+listaPaises = document.getElementById("paises").getElementsByTagName("li");
 
-    let nuevoNodo = createNode(
-      "li",
-      nuevoPais,
-      "",
-      "background-color:blue; color:white;",
-    );
+let nuevoPais = document.getElementById("nuevoPais").value;
+
+if (nuevoPais == "") 
+    info.innerHTML ="Debe escribir un País";
+else { // Insertamos nuevo nodo en la lista
+    let nuevoNodo = createNode("li", nuevoPais, "", "background-color:blue; color:white;")
     if (nuevoNodo) {
-      document.getElementById("paises").appendChild(nuevoNodo);
-      info.innerHTML =
-        "<span style='color:lightgreen; background-color:green;'>Nodo insertado correctamente!</span>";
-    } else
-      info.innerHTML =
-        "<span style='color:red'>No se ha podido insertar el nodo</span>";
-  }
-};
+        // document.getElementById("paises").appendChild(nuevoNodo);
+        document.getElementById("paises").insertBefore(nuevoNodo,listaPaises[2]);
+
+        let insertado = listaPaises[2].before(nuevoNodo);
+        console.dir(insertado);
+        
+        info.innerHTML = "<span style='color:lightgreen; background-color:green;'>Nodo insertado correctamente!</span>"
+    }
+    else info.innerHTML = "<span style='color:red'>No se ha podido insertar el nodo</span>"
+}
+}
 
 document.getElementById("bBorraPais").onclick = function () {
-  let lista = document.getElementById("paises");
+    let lista = document.getElementById("paises");
 
-  let opcionesLista = lista.getElementsByTagName("li");
+    let opcionesLista = lista.getElementsByTagName("li");
 
-  if (opcionesLista.length > 3) {
-    opcionesLista[2].remove();
+    if (opcionesLista.length > 3) {
+    //     let elemBorrado = opcionesLista[2].parentNode.removeChild(opcionesLista[2]);
+    //     console.log(elemBorrado);
 
-    // let elemBorrado = opcionesLista[2].parentNode.removeChild(opcionesLista[2]); devuelve el nodo borrao
-    // console.log(elemBorrado);
-  }
-};
+        let elemBorrado = opcionesLista[2].remove();
+        console.log(elemBorrado);
 
-let enlaceImagen = createNode(
-  "a", // O "button", el que prefieras para hacer clic
-  "Cambiar imagen",
-  "",
-  "background-color:#1276af;border-radius:8px; color:white; padding:0.2%;margin:0.2%;cursor:pointer;",
-);
-
-if (document.getElementsByClassName("section1").length >= 2)
-  document.getElementsByClassName("section1")[1].appendChild(enlaceImagen);
-
-enlaceImagen.onclick = function () {
-  let miImagen = document.querySelector(".section1 img"); 
-
-
-  if (miImagen) {
-    if (miImagen.src.includes("images2.jpg")) {
-      miImagen.src = "images.jpg";
-    } else {
-      miImagen.src = "images2.jpg";
     }
-  } else {
-    console.error("No se encontró ninguna etiqueta <img> dentro de .section1");
-  }
-};
-
-let input = createNode("input");
-input.type = "text";
 
 
-let bReadOnly = createNode("button","Bloquear / Desbloquear escritura");
-bReadOnly.id = "bReadOnly";
+}
 
-document.getElementsByClassName("section1")[2].appendChild(input);
-document.getElementsByClassName("section1")[2].appendChild(bReadOnly);
-
-document.getElementById("bReadOnly").addEventListener("click",function(){
-    if(input.readOnly){
-        input.readOnly = false;
-        input.style.backgroundColor = "white";
-    }else {
-        input.readOnly = true;
-        input.style.backgroundColor = "darkgrey";
+document.getElementById("aBloquear").addEventListener("click", function () {
+    if (this.innerText == "Bloquear") {
+        this.innerText = "Desbloquear";
+        document.getElementById("it1").setAttribute("readonly", "true");
+        document.getElementById("it1").setAttribute("style", "background-color:lightgray;");
     }
+    else {
+        this.innerText = "Bloquear";
+        document.getElementById("it1").removeAttribute("readonly");
+        document.getElementById("it1").setAttribute("style", "background-color:white;");
+    }
+})
+
+document.getElementById("bDevuelveImpares").onclick = function () {
+    let lista2 = document.querySelectorAll("#paises li");
+    console.log(lista2.innerText)
+    let arrayImpares = new Array();
+
+    for (let paisImpar = 0; paisImpar < lista2.length; paisImpar+=2)
+        arrayImpares.push(lista2[paisImpar].innerText);
+
+    console.dir(arrayImpares);
+
+}
+
+document.getElementById("aModoNoche").addEventListener("click", function () {
+    let buttonStyle = window.getComputedStyle(document.getElementsByTagName("button")[0]);
     
+    if (buttonStyle.getPropertyValue("background-color") == "rgb(152, 151, 151)") {
+        // Estoy en modo noche, cambio a modo día
+        this.innerText = "Cambiar a modo noche"
+        document.body.className = "";
+    }
+    else {
+        document.body.className = "modoNoche";
+        this.innerText = "Cambiar a modo dia";
+    }
+});
+
+document.getElementById("bSustituye").addEventListener("click", ()=> {
+    let paisSustituir = createNode("li", document.getElementById("nuevoPais").value, "", "");
+    lista.replaceChild(paisSustituir, listaPaises[2]);
+
+});
+
+document.getElementById("bClonaLista").addEventListener("click", ()=> {
+    let section = document.getElementById("s4");
+
+    let clon = lista.cloneNode(true);
+    console.log(clon);
+
+    clon.appendChild(createNode("li", "Noruega", "", ""));
+
+    section.appendChild(clon);
 })
 
 
-
-// enlaceImagen.onclick = function(){
-//     document.getElementById("img1").src = "./images.jpg";
-// }
-
-// Funcion Crear nodos
-
-function createNode(tipoNodo, tipoTexto, tipoid) {
-  let nodo;
-  let nodoText;
-
-  switch (arguments.length) {
-    case 0:
-      throw "Se necesita al menos el tipo de elemento a crear.";
-      break;
-    case 1:
-      nodo = document.createElement(tipoNodo);
-      break;
-    case 2:
-      nodo = document.createElement(tipoNodo);
-      nodoText = document.createTextNode(tipoTexto);
-      nodo.appendChild(nodoText);
-      break;
-    case 3:
-      nodo = document.createElement(tipoNodo);
-      nodoText = document.createTextNode(tipoTexto);
-      nodo.appendChild(nodoText);
-      nodo.id = tipoid;
-      break;
-  }
-
-  return nodo;
-}
-
-/* Funcion creada en clase este año*/
 
 /**
  * @param {string} tipo
@@ -187,21 +207,24 @@ function createNode(tipoNodo, tipoTexto, tipoid) {
  * @param {string} estilos
  * @return node o null si no se ha podido crear el nodo
  */
-function createNode(tipo, texto, id, styles) {
-  let elemento = null;
+function createNode (tipo, texto, id, styles) {
+    let elemento = null;
 
-  if (tipo && typeof tipo === "string") elemento = document.createElement(tipo);
-  else return null;
+    if ((tipo) && (typeof tipo === "string")) 
+        elemento = document.createElement(tipo);
+    else
+        return null;
+        
+    if ((texto != "") && (typeof texto === "string")) {
+        let elementoText = document.createTextNode(texto);
+        elemento.appendChild(elementoText);
+    }
 
-  if (texto != "" && typeof texto === "string") {
-    let elementoText = document.createTextNode(texto);
-    elemento.appendChild(elementoText);
-  }
+    if (id != "") 
+        elemento.id = id;
 
-  if (id != "") elemento.id = id;
+    if ((styles) && (typeof styles === "string") && (styles != ""))
+        elemento.style = styles;
 
-  if (styles && typeof styles === "string" && styles != "")
-    elemento.style = styles;
-
-  return elemento;
+    return elemento;
 }
