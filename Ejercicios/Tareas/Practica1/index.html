@@ -67,21 +67,8 @@
                                 <th>Cuota</th>
                             </tr>
                         </thead>
-                        <tbody id="cuerpo-tabla-socios">
-                            <tr>
-                                <td>
-                                    <div class="avatar-id">
-                                        <div class="avatar">LM</div>
-                                        <span>SOC-0001</span>
-                                    </div>
-                                </td>
-                                <td>Lucía Martín R.</td>
-                                <td class="celda-email">lu**********@correo.es</td>
-                                <td>31 años</td>
-                                <td>natación, yoga</td>
-                                <td>35.00 €</td>
-                            </tr>
-                        </tbody>
+                        <!-- El contenido de la tabla lo genera main.js -->
+                        <tbody id="cuerpo-tabla-socios"></tbody>
                     </table>
                 </div>
             </section>
@@ -109,9 +96,14 @@
                 <div id="mensaje-alta"></div>
                 <form id="formulario-alta">
                     <div class="grupo-formulario">
-                        <label>Nombre y Apellidos</label>
+                        <label>Nombre</label>
                         <input type="text" id="alta-nombre" placeholder="Ej: María José">
                         <span class="mensaje-error" id="error-nombre"></span>
+                    </div>
+                    <div class="grupo-formulario">
+                        <label>Apellidos</label>
+                        <input type="text" id="alta-apellidos" placeholder="Ej: Pérez Gómez">
+                        <span class="mensaje-error" id="error-apellidos"></span>
                     </div>
                     <div class="grupo-formulario">
                         <label>DNI</label>
@@ -148,26 +140,16 @@
                     <div class="grupo-formulario">
                         <label>Cuota mensual (€)</label>
                         <input type="number" id="alta-cuota" value="35" min="1" step="any">
+                        <span class="mensaje-error" id="error-cuota"></span>
                     </div>
                     <button type="submit" class="boton-completo">Dar de alta socio</button>
                 </form>
             </section>
 
-            <!-- Estadísticas -->
+            <!-- Estadísticas (el contenido lo genera main.js) -->
             <section>
                 <h2>Estadísticas del Club</h2>
-                <div class="rejilla-estadisticas" id="contenedor-estadisticas">
-                    <div class="tarjeta-stat"><h3>Total Socios</h3><p>10</p></div>
-                    <div class="tarjeta-stat"><h3>Ingresos Mes</h3><p>365.00 €</p></div>
-                    <div class="tarjeta-stat"><h3>Cuota Media</h3><p>36.50 €</p></div>
-                    <div class="tarjeta-stat"><h3>Edad Media</h3><p>34.2 años</p></div>
-                    <div class="tarjeta-stat"><h3>Edad Mín / Máx</h3><p>17 / 58</p></div>
-                    <div class="tarjeta-stat"><h3>Más Popular</h3><p class="stat-texto-sm">Natación (6)</p></div>
-                    <div class="tarjeta-stat"><h3>¿Menores de edad?</h3><p>Sí</p></div>
-                    <div class="tarjeta-stat"><h3>¿Con actividad?</h3><p>Sí</p></div>
-                    <div class="tarjeta-stat tarjeta-stat-amplia"><h3>Top 3 Veteranos</h3><p class="stat-texto-xs">Carmen J., Carlos S., Manuel R.</p></div>
-                    <div class="tarjeta-stat tarjeta-stat-amplia"><h3>Dominios Email</h3><p class="stat-texto-xs">correo.es, gmail.com, yahoo.es, outlook.com</p></div>
-                </div>
+                <div class="rejilla-estadisticas" id="contenedor-estadisticas"></div>
             </section>
 
         </div>

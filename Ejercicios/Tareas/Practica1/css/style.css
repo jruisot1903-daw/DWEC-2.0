@@ -195,6 +195,18 @@ th {
     font-weight: 600;
 }
 
+tbody tr:hover {
+    background: #1a1a1a;
+}
+
+/* Fila "No hay socios que coincidan" */
+td[colspan] {
+    text-align: center;
+    color: var(--texto-atenuado);
+    font-style: italic;
+    padding: 20px;
+}
+
 .celda-email {
     text-transform: none;
     color: var(--texto-atenuado);
@@ -220,7 +232,7 @@ th {
     color: var(--dorado-principal);
 }
 
-/* Formularios y Fichas */
+/* Formularios */
 .grupo-formulario {
     margin-bottom: 14px;
 }
@@ -247,17 +259,38 @@ th {
     border-color: var(--dorado-principal);
 }
 
-.grupo-formulario input.error, .grupo-formulario select.error {
-    border-color: var(--color-error);
+/* Campo con error (inputs y rejilla de actividades) */
+.campo-error {
+    border: 1px solid var(--color-error) !important;
     background-color: #2a1515;
 }
 
+.rejilla-checkbox.campo-error {
+    padding: 8px;
+    border-radius: 6px;
+}
+
+/* Casillas de actividades */
 .rejilla-checkbox {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
     margin-top: 5px;
     font-size: 0.9rem;
+}
+
+.rejilla-checkbox label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+    color: var(--texto-claro);
+    cursor: pointer;
+}
+
+.rejilla-checkbox input[type="checkbox"] {
+    width: auto;
+    accent-color: var(--dorado-principal);
 }
 
 .texto-marcador {
@@ -280,6 +313,31 @@ th {
     margin-bottom: 12px;
     border: 1px solid #1e3a24;
     font-size: 0.9rem;
+}
+
+/* Ficha de socio */
+.ficha {
+    background: #1a1a1a;
+    border: 1px solid var(--dorado-principal);
+    border-radius: 8px;
+    padding: 15px 20px;
+}
+
+.ficha h3 {
+    margin: 0 0 12px 0;
+    color: var(--dorado-principal);
+    font-size: 1.05rem;
+}
+
+.ficha p {
+    margin: 6px 0;
+    font-size: 0.9rem;
+    color: var(--texto-claro);
+}
+
+.ficha strong {
+    color: var(--texto-atenuado);
+    font-weight: 600;
 }
 
 /* Estadísticas */
@@ -325,12 +383,31 @@ th {
     color: var(--texto-claro);
 }
 
-/* Pantalla completa */
-section:fullscreen, section:-webkit-full-screen {
+/* Pantalla completa del listado */
+#seccion-listado:fullscreen {
     background: var(--fondo-tarjeta);
-    padding: 30px;
-    overflow-y: auto;
-    width: 100vw;
-    height: 100vh;
+    padding: 25px;
+    overflow: auto;
     box-sizing: border-box;
+}
+
+/* Adaptación a móvil */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .cabecera-principal {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .contenedor-fecha-hora {
+        text-align: center;
+    }
+
+    .tarjeta-stat-amplia {
+        grid-column: span 1;
+    }
 }
