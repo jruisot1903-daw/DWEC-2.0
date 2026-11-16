@@ -1,0 +1,435 @@
+:root {
+    --fondo-principal: #0a0a0a;
+    --fondo-tarjeta: #141414;
+    --dorado-principal: #d4af37;
+    --dorado-hover: #f3c653;
+    --texto-claro: #f5f5f5;
+    --texto-atenuado: #a3a3a3;
+    --borde-dorado: #2a2512;
+    --borde-tarjeta: #262626;
+    --color-error: #ef4444;
+    --color-exito: #22c55e;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--fondo-principal);
+    color: var(--texto-claro);
+    margin: 0;
+    padding: 20px;
+}
+
+/* Cabecera estilo Black & Gold */
+.cabecera-principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--fondo-tarjeta);
+    padding: 15px 25px;
+    border-radius: 8px;
+    border: 1px solid var(--dorado-principal);
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.1);
+    margin-bottom: 25px;
+}
+
+.contenedor-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.fila-superior-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.imagen-logo {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+}
+
+.texto-logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--dorado-principal);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.subtitulo-logo {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--texto-atenuado);
+}
+
+.contenedor-fecha-hora {
+    text-align: right;
+    font-size: 0.9rem;
+    color: var(--texto-atenuado);
+}
+
+#fecha-hoy {
+    color: var(--texto-claro);
+    font-weight: 500;
+}
+
+/* Diseño General y Secciones */
+.diseno-principal {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+@media (min-width: 1024px) {
+    .diseno-principal {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+.columna-principal {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+section {
+    background: var(--fondo-tarjeta);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--borde-tarjeta);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.cabecera-seccion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+h2 {
+    margin-top: 0;
+    font-size: 1.1rem;
+    color: var(--dorado-principal);
+    border-bottom: 1px solid var(--borde-tarjeta);
+    padding-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+/* Controles, Inputs y Botones */
+.controles-busqueda {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.controles-dni {
+    margin-bottom: 10px;
+}
+
+.controles-busqueda input, .controles-busqueda select, button {
+    padding: 9px 14px;
+    background-color: #1f1f1f;
+    border: 1px solid var(--borde-tarjeta);
+    color: var(--texto-claro);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.controles-busqueda input:focus, .controles-busqueda select:focus {
+    border-color: var(--dorado-principal);
+}
+
+.controles-busqueda input {
+    flex: 1;
+    min-width: 200px;
+}
+
+button {
+    background: var(--dorado-principal);
+    color: #000000;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+button:hover {
+    background: var(--dorado-hover);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.boton-completo {
+    width: 100%;
+}
+
+/* Tablas */
+.contenedor-tabla {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 12px 10px;
+    border-bottom: 1px solid var(--borde-tarjeta);
+}
+
+th {
+    background: #1a1a1a;
+    color: var(--dorado-principal);
+    font-weight: 600;
+}
+
+tbody tr:hover {
+    background: #1a1a1a;
+}
+
+/* Fila "No hay socios que coincidan" */
+td[colspan] {
+    text-align: center;
+    color: var(--texto-atenuado);
+    font-style: italic;
+    padding: 20px;
+}
+
+.celda-email {
+    text-transform: none;
+    color: var(--texto-atenuado);
+}
+
+.avatar-id {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    background: #262626;
+    border: 1px solid var(--dorado-principal);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.8rem;
+    color: var(--dorado-principal);
+}
+
+/* Formularios */
+.grupo-formulario {
+    margin-bottom: 14px;
+}
+
+.grupo-formulario label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: var(--texto-atenuado);
+}
+
+.grupo-formulario input, .grupo-formulario select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 9px;
+    background-color: #1f1f1f;
+    border: 1px solid var(--borde-tarjeta);
+    color: var(--texto-claro);
+    border-radius: 6px;
+}
+
+.grupo-formulario input:focus, .grupo-formulario select:focus {
+    border-color: var(--dorado-principal);
+}
+
+/* Campo con error (inputs y rejilla de actividades) */
+.campo-error {
+    border: 1px solid var(--color-error) !important;
+    background-color: #2a1515;
+}
+
+.rejilla-checkbox.campo-error {
+    padding: 8px;
+    border-radius: 6px;
+}
+
+/* Casillas de actividades */
+.rejilla-checkbox {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-top: 5px;
+    font-size: 0.9rem;
+}
+
+.rejilla-checkbox label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+    color: var(--texto-claro);
+    cursor: pointer;
+}
+
+.rejilla-checkbox input[type="checkbox"] {
+    width: auto;
+    accent-color: var(--dorado-principal);
+}
+
+.texto-marcador {
+    color: var(--texto-atenuado);
+    font-style: italic;
+}
+
+.mensaje-error {
+    color: var(--color-error);
+    font-size: 0.75rem;
+    margin-top: 3px;
+    display: block;
+}
+
+.mensaje-exito {
+    color: var(--color-exito);
+    background: #112618;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    border: 1px solid #1e3a24;
+    font-size: 0.9rem;
+}
+
+/* Ficha de socio */
+.ficha {
+    background: #1a1a1a;
+    border: 1px solid var(--dorado-principal);
+    border-radius: 8px;
+    padding: 15px 20px;
+}
+
+.ficha h3 {
+    margin: 0 0 12px 0;
+    color: var(--dorado-principal);
+    font-size: 1.05rem;
+}
+
+.ficha p {
+    margin: 6px 0;
+    font-size: 0.9rem;
+    color: var(--texto-claro);
+}
+
+.ficha strong {
+    color: var(--texto-atenuado);
+    font-weight: 600;
+}
+
+/* Estadísticas */
+.rejilla-estadisticas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 10px;
+}
+
+.tarjeta-stat {
+    background: #1a1a1a;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid var(--borde-tarjeta);
+    text-align: center;
+}
+
+.tarjeta-stat-amplia {
+    grid-column: span 2;
+}
+
+.tarjeta-stat h3 {
+    margin: 0 0 5px 0;
+    font-size: 0.75rem;
+    color: var(--texto-atenuado);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tarjeta-stat p {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--dorado-principal);
+}
+
+.stat-texto-sm {
+    font-size: 0.85rem;
+}
+
+.stat-texto-xs {
+    font-size: 0.8rem;
+    color: var(--texto-claro);
+}
+
+/* Pantalla completa del listado */
+#seccion-listado:fullscreen {
+    background: var(--fondo-tarjeta);
+    padding: 25px;
+    overflow: auto;
+    box-sizing: border-box;
+}
+
+/* Adaptación a móvil */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .cabecera-principal {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .contenedor-fecha-hora {
+        text-align: center;
+    }
+
+    .tarjeta-stat-amplia {
+        grid-column: span 1;
+    }
+}
+
+/* Botones de las ventanas nuevas */
+.acciones {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.boton-secundario {
+    background: transparent;
+    color: var(--dorado-principal);
+    border: 1px solid var(--dorado-principal);
+}
+
+.boton-secundario:hover {
+    background: #1f1b0a;
+}
+
+/* Que el contenedor del aviso no ocupe espacio cuando está vacío */
+#mensaje-alta:empty {
+    display: none;
+}

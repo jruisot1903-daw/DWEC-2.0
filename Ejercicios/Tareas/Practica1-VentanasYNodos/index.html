@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Socios - Cerro Sport</title>
+    <link rel="shortcut icon" href="./img/LogoCerro-Transparente.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/main.js" defer></script>
+</head>
+<body>
+
+    <header class="cabecera-principal">
+        <div class="contenedor-logo">
+            <div class="fila-superior-logo">
+                <img src="./img/LogoCerro-Transparente.png" alt="Logo Cerro Sport" class="imagen-logo">
+                <span class="texto-logo">Cerro Sport</span>
+            </div>
+            <p class="subtitulo-logo">Gitanicos X Cobre</p>
+        </div>
+        <div class="contenedor-fecha-hora">
+            <div id="fecha-hoy"></div>
+            <div id="hora-actual"></div>
+        </div>
+    </header>
+
+    <main class="diseno-principal">
+        <!-- Columna Izquierda: Listado y Ficha -->
+        <div class="columna-principal">
+
+            <!-- Listado de Socios -->
+            <section id="seccion-listado">
+                <div class="cabecera-seccion">
+                    <h2>Listado de Socios</h2>
+                    <button id="boton-pantalla-completa">Pantalla completa</button>
+                </div>
+
+                <div class="controles-busqueda">
+                    <input type="text" id="entrada-buscar" placeholder="Buscar por nombre, apellidos o email...">
+                    <!-- Las opciones de actividades las genera main.js -->
+                    <select id="selector-filtro-actividad"></select>
+                    <select id="selector-orden">
+                        <option value="ninguno">Ordenar por...</option>
+                        <option value="nombre">Nombre</option>
+                        <option value="apellidos">Apellidos</option>
+                        <option value="jovenes">Más jóvenes primero</option>
+                        <option value="antiguos">Más antiguos primero</option>
+                    </select>
+                </div>
+
+                <div class="contenedor-tabla">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nombre</th>
+                                <th>Email</th>
+                                <th>Edad</th>
+                                <th>Actividades</th>
+                                <th>Cuota</th>
+                            </tr>
+                        </thead>
+                        <!-- Las filas las genera main.js -->
+                        <tbody id="cuerpo-tabla-socios"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Ficha de Socio (se abre en una ventana nueva) -->
+            <section>
+                <h2>Consulta de Ficha por DNI</h2>
+                <div class="controles-busqueda controles-dni">
+                    <input type="text" id="entrada-dni-buscar" placeholder="Introduce DNI (ej: 12345678Z)...">
+                    <button id="boton-consultar-dni">Consultar</button>
+                </div>
+                <div id="resultado-ficha">
+                    <p class="texto-marcador">Introduce un DNI para ver la ficha en una ventana nueva.</p>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Columna Derecha: Alta y Estadísticas -->
+        <div class="columna-principal">
+
+            <!-- Alta de Socio (el formulario se abre en una ventana nueva) -->
+            <section>
+                <h2>Nuevo Socio</h2>
+                <p class="texto-marcador">El formulario de alta se abre en una ventana nueva.</p>
+                <div id="mensaje-alta"></div>
+                <button type="button" id="boton-abrir-alta" class="boton-completo">Abrir formulario de alta</button>
+            </section>
+
+            <!-- Estadísticas (las genera main.js) -->
+            <section>
+                <h2>Estadísticas del Club</h2>
+                <div class="rejilla-estadisticas" id="contenedor-estadisticas"></div>
+            </section>
+
+        </div>
+    </main>
+
+</body>
+</html>
