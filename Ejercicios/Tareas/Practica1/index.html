@@ -52,6 +52,7 @@
                         <option value="apellidos">Apellidos</option>
                         <option value="jovenes">Más jóvenes primero</option>
                         <option value="antiguos">Más antiguos primero</option>
+                        <option value="cuota">Cuota más alta</option>
                     </select>
                 </div>
 
@@ -65,6 +66,7 @@
                                 <th>Edad</th>
                                 <th>Actividades</th>
                                 <th>Cuota</th>
+                                <th>Antigüedad</th>
                             </tr>
                         </thead>
                         <!-- El contenido de la tabla lo genera main.js -->
@@ -139,7 +141,7 @@
                     </div>
                     <div class="grupo-formulario">
                         <label>Cuota mensual (€)</label>
-                        <input type="number" id="alta-cuota" value="35" min="1" step="any">
+                        <input type="number" id="alta-cuota" value="35" min="1" max="999" step="any">
                         <span class="mensaje-error" id="error-cuota"></span>
                     </div>
                     <button type="submit" class="boton-completo">Dar de alta socio</button>

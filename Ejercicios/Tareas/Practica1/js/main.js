@@ -171,6 +171,17 @@ function fechaHoyISO() {
     const h = new Date();
     return `${h.getFullYear()}-${pad(h.getMonth() + 1)}-${pad(h.getDate())}`;
 }
+/** Calcular los años del socio en el club dependiendo desde su fecha de alta */
+function calcularAnosClub(fechaAlta){
+    let fechaHoy = hoySinHora();
+     let fechaInicio = parsearFecha(fechaAlta);
+
+    ano = fechaHoy.getFullYear() - fechaInicio.getFullYear();
+    mes = fechaHoy.getMonth() - fechaInicio.getMonth();
+
+    return `${ano} ${ano === 1 ? "año" : "años"} ${mes} ${mes === 1 ? "mes" : "meses"}`;
+    
+}
 
 /** Calcula los años cumplidos a día de hoy a partir de una fecha "aaaa-mm-dd". */
 function calcularEdad(fechaNacimiento) {
@@ -298,6 +309,10 @@ function obtenerSociosVisibles() {
         case "antiguos": // nacidos antes primero (mayores)
             resultado.sort((a, b) => a.fechaNacimiento.localeCompare(b.fechaNacimiento));
             break;
+        case "cuota": // cuota mas alta
+            resultado.sort((a, b) => toString(a.cuota).localeCompare(toString(b.cuota))); // No funciona
+                
+            
     }
     return resultado;
 }
@@ -325,6 +340,7 @@ function pintarTabla() {
             <td>${textoEdad(calcularEdad(socio.fechaNacimiento))}</td>
             <td>${socio.actividades.join(", ")}</td>
             <td>${formatearEuros(socio.cuota)}</td>
+            <td>${calcularAnosClub(socio.fechaAlta)}</td>
         </tr>
     `).join("");
 }
@@ -391,8 +407,27 @@ function consultarFicha() {
             <p><strong>Próximo cumpleaños:</strong> en ${diasCumple} días</p>
             <p><strong>Actividades:</strong> ${socio.actividades.join(", ")}</p>
             <p><strong>Cuota mensual:</strong> ${formatearEuros(socio.cuota)}</p>
+            <h3>Curiosidad:</h3>
+            <p><strong>Vocales del nombre completo:</strong> ${numeroVocales(socio.nombre,socio.apellidos)}</p>
         </div>
     `;
+}
+
+/** Cualculamos el numero de vocales que tiene el nombre del socio completo (sin distinguir tildes) */
+function numeroVocales(nombre,apellidos){
+    let reg = /[aeiouáéíóú]/i;
+    let cont = 0;
+    let nomCOmpleto = nombre+" "+apellidos;
+
+    let arrayNombre = nomCOmpleto.split("");
+    
+    for (let i = 0; i < arrayNombre.length; i++) {
+        if(reg.test(arrayNombre[i])){
+            cont++;
+        }
+    }
+
+    return cont;
 }
 
 // =====================================================
@@ -424,6 +459,7 @@ function validarTextoNombre(texto, etiqueta) {
     return "";
 }
 
+
 /** Valida el DNI (formato, letra correcta y que no esté repetido). Devuelve el error o "". */
 function validarDni(dni) {
     if (!/^\d{8}[A-Za-z]$/.test(dni)) return "El DNI debe tener 8 dígitos y una letra.";
@@ -442,6 +478,16 @@ function validarEmail(email) {
     return "";
 }
 
+/** Validamos el campo cuota a la hora de dar de alta un socio: num hasta 3 cifras, con coma o punto 
+ * y como max 2 decimales
+*/
+function validarCuota(cuota){
+    let regCuota = /[0-9]{3}\,|\.[0-9]{2}/;
+    if(isNaN(cuota) || cuota <= 0 || regCuota.test(regCuota)){
+        return "Formato de cuota no valido (Ej: 123,23 o 231.43)"
+    }
+    return "";
+}
 /** Valida el teléfono (9 dígitos que empiezan por 6, 7, 8 o 9; se admiten espacios). Devuelve el error o "". */
 function validarTelefono(telefono) {
     const limpio = telefono.replace(/\s/g, "");
@@ -504,7 +550,7 @@ function procesarAlta(evento) {
         telefono: validarTelefono(telefono),
         fnac: validarFechaNacimiento(fnac),
         actividades: actividades.length === 0 ? "Marca al menos una actividad." : "",
-        cuota: (isNaN(cuota) || cuota <= 0) ? "La cuota debe ser un número mayor que 0." : ""
+        cuota: validarCuota(cuota)
     };
 
     mostrarError(inNombre, "error-nombre", errores.nombre);
