@@ -1,0 +1,10 @@
+body{
+    height: 100%;
+    width: 100%;
+}
+
+div h3{
+    visibility: visible;
+    transition-duration: 1s;
+    transition: visibility;
+}
