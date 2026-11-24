@@ -34,42 +34,42 @@ for(elem of document.getElementsByTagName("div")){
 }
 */
 
-for (elem of document.getElementsByTagName("div")) {
-    elem.addEventListener("click",ocultar);
-    elem.addEventListener("mouseenter",entrarSalir);
-    elem.addEventListener("mouseleave",entrarSalir);
-}
+// for (elem of document.getElementsByTagName("div")) {
+//     elem.addEventListener("click",ocultar);
+//     elem.addEventListener("mouseenter",entrarSalir);
+//     elem.addEventListener("mouseleave",entrarSalir);
+// }
 
-function ocultar() {
-    let local = this.querySelector("h3");
-    if (local.style.visibility == "hidden")
-        local.style.visibility = "visible"
-    else
-        local.style.visibility = "hidden"
-}
+// function ocultar() {
+//     let local = this.querySelector("h3");
+//     if (local.style.visibility == "hidden")
+//         local.style.visibility = "visible"
+//     else
+//         local.style.visibility = "hidden"
+// }
 
-//mouseenter y mouseleave
+// //mouseenter y mouseleave
 
-function entrarSalir(e) {
-    console.log(e.currentTarget)
-            console.log(e.target)
-            switch (e.type) {
-                case "click":
-                    let local = e.currentTarget.querySelector("h3");
-                    if (local.style.visibility == "hidden")
-                        local.style.visibility = "visible";
-                    else
-                        local.style.visibility = "hidden";
-                    break;
-                case "mouseenter":
-                    e.currentTarget.style.backgroundColor = "black";
-                    break;
-                case "mouseleave":
-                     e.currentTarget.style.backgroundColor = "silver";
-                    break;
-            }
+// function entrarSalir(e) {
+//     console.log(e.currentTarget)
+//             console.log(e.target)
+//             switch (e.type) {
+//                 case "click":
+//                     let local = e.currentTarget.querySelector("h3");
+//                     if (local.style.visibility == "hidden")
+//                         local.style.visibility = "visible";
+//                     else
+//                         local.style.visibility = "hidden";
+//                     break;
+//                 case "mouseenter":
+//                     e.currentTarget.style.backgroundColor = "black";
+//                     break;
+//                 case "mouseleave":
+//                      e.currentTarget.style.backgroundColor = "silver";
+//                     break;
+//             }
 
-}
+// }
 
 //eventos de teclado
 //keyholder examen
@@ -96,9 +96,4 @@ function entrarSalir(e) {
 //     infoRaton.innerHTML += `(offset --> X: ${e.offsetX}, Y: ${e.offsetY})<br>`;
 //     infoRaton.innerHTML += `(screen --> X: ${e.screenX}, Y: ${e.screenY})`;
 //  })
-
-document.getElementById("submit1").addEventListener("click", (e) => {
-    e.preventDefault();
-    document.getElementById("login").style.border = "solid red 1px";
-})
 
