@@ -9,33 +9,39 @@
 </head>
 <body>
     <h2 id="info"></h2>
-    <form action="#" id="form1">
-        <!-- <label for="usu">Usuario:</label> -->
-        <input type="text" name="usu" id="usu" placeholder="Login">
+    <hr>
 
-        <!-- <label for="pass">Password:</label> -->
-        <input type="password" name="pass" id="pass" placeholder="Password">
-
-         <a href="#" id="aForm1">Enviar</a>
-    </form>
-
-    <form action="#" id="form2">
-        <label for="Categoria">Categoria:</label>
+    <form id="form1">
+        <input type="text" name="" id="login" placeholder="Login">
         <br>
-        <select name="Categoria" id="">
-            <option value="Deportes">Deportes</option>
-            <option value="Comida">Comida</option>
-            <option value="Tecnologia">Tecnologia</option>
+        <input type="password" name="" id="pass"  placeholder="Password">
+        <br>
+        <a href="#" id="aForm1">Enviar</a>
+    </form>
+   
+    <form>
+        <label for="">Categoria:</label>
+        <br>
+        <select name="" id="colores" multiple size="2">
+            <option value="" disabled selected>Elige opción</option>
+            <option value="DB4021">Rojo</option>
+            <option value="2181DB">Azul</option>
+            <option value="AC37D4">Violeta</option>
+            <option value="D48337">Naranja</option>
+            <option value="D4CF37">Amarillo</option>
+            <option value="37D444">Verde</option>
         </select>
 
+        <label for="">Elige una opción:</label>
+        <label>Tengo menos de 10 <input type="radio" name="edades" value="1"></label>
+        <label>Tengo más de 10 y menos de 18<input type="radio" name="edades" value="2"></label>
+        <label>Tengo entre 18 y 110 <input type="radio" name="edades" value="3" checked></label>
         <br>
-        <label for="">Elije una opcion:</label>
-        <br>
-        <label for="">Tengo más de 18</label>
-        <input type="radio" name="edad" value="1">
-        <label for="">Tengo menos de 18</label>
-        <input type="radio" name="edad" value="2">
+        <textarea name="" id="textArea"></textarea>
     </form>
-    
+    <hr>
+    <meter value="50" min="0" max="100" id="meter"></meter>
+    <progress value="50" min="0" max="100" id="progress"></progress>
+    <input type="range" id="rango">
 </body>
 </html>
